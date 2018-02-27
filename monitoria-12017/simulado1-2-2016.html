@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Resolução da Questão 1 do Simulado</title>
+        <style type="text/css">
+            table {
+                width: 400px;
+            }
+            
+            table, tr, td {
+                border: 1px solid #000;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            function criaTabela(){
+                var clientes = [
+                        {nome: 'Pedro', idade: 29, salario: 1800},
+                        {nome: 'Tiago', idade: 17, salario: 1200},
+                        {nome: 'Lucas', idade: 23, salario: 800},
+                        {nome: 'Felipe', idade: 25, salario: 9000}
+                    ];
+                
+                var table = document.createElement('table');
+                
+                var trHead = document.createElement('tr');
+                var thNome = document.createElement('th');
+                thNome.appendChild(document.createTextNode('Nome'));
+                trHead.appendChild(thNome);
+                var thIdade = document.createElement('th');
+                thIdade.appendChild(document.createTextNode('Idade'));
+                trHead.appendChild(thIdade);
+                var thSalario = document.createElement('th');
+                thSalario.appendChild(document.createTextNode('Salário'));
+                trHead.appendChild(thSalario);
+                table.appendChild(trHead);
+                
+                var somaIdades = 0;
+                var somaSalarios = 0;
+                for(var i in clientes){
+                    somaIdades += clientes[i].idade;
+                    somaSalarios += clientes[i].salario;
+                    
+                    var tr = document.createElement('tr');
+                    
+                    var tdNome = document.createElement('td');
+                    tdNome.appendChild(document.createTextNode(clientes[i].nome));
+                    tr.appendChild(tdNome);
+                    
+                    var tdIdade = document.createElement('td');
+                    tdIdade.appendChild(document.createTextNode(clientes[i].idade));
+                    tr.appendChild(tdIdade);
+                    
+                    var tdSalario = document.createElement('td');
+                    tdSalario.appendChild(document.createTextNode(clientes[i].salario));
+                    tr.appendChild(tdSalario);
+                    
+                    table.appendChild(tr);
+                }
+                
+                var trTotal = document.createElement('tr');
+                
+                var tdTotal = document.createElement('td');
+                tdTotal.appendChild(document.createTextNode('Média/Total'));
+                trTotal.appendChild(tdTotal);
+                
+                var mediaIdades = somaIdades / clientes.length;
+                var tdMedia = document.createElement('td');
+                tdMedia.appendChild(document.createTextNode(mediaIdades));
+                trTotal.appendChild(tdMedia);
+                
+                var tdTotalSalario = document.createElement('td');
+                tdTotalSalario.appendChild(document.createTextNode(somaSalarios));
+                trTotal.appendChild(tdTotalSalario);
+                
+                table.appendChild(trTotal);
+                
+                document.body.appendChild(table);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="criaTabela()">Criar</button>
+              
+    </body>
+</html>

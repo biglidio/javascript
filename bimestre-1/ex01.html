@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercício 1</title>
+</head>
+
+<body>
+	<button onclick="add()">Adicionar</button>
+
+	<p>Um p para atrapalhar</p>
+	<p id="ha">Outro p para atrapalhar</p>
+
+
+	<script type="text/javascript">
+        function add(){
+        	var p = document.getElementsByTagName("p");
+
+        	var divVerm = document.createElement("div");
+        	var textoVerm = document.createTextNode("Vermelho");
+        	divVerm.appendChild(textoVerm);
+        	divVerm.style.backgroundColor = "#f00";
+        	p[1].parentNode.insertBefore(divVerm, p[1]);
+
+        	var divAzul = document.createElement("div");
+        	var textoAzul = document.createTextNode("Azul");
+        	divAzul.appendChild(textoAzul);
+        	divAzul.style.backgroundColor = "#00f";
+        	p[1].parentNode.insertBefore(divAzul, p[1].nextSibling);
+        }
+	</script>
+</body>
+</html>

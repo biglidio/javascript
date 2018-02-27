@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Desafio - 1º Bimestre</title>
+</head>
+
+<body>
+	<form name="avaliacao">
+		Dados: 
+		<input type="text" name="nome" placeholder="Digite o nome">
+		<input type="number" name="nota" min="0" max="10" step="0.5" value="0">
+		<input type="button" onclick="inserir()" value="Inserir">
+	</form>
+	
+	<br>
+	
+	<table id="tabela">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Nota</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	
+	
+	<script type="text/javascript">
+		//Configuração do CSS da tabela
+		//Recebo a tabela pelo id="tabela"
+		var tabela = document.getElementById('tabela');
+		//Edito o css width da tabela
+		tabela.style.width = '700px';
+		//Children são todos os filhos do elemento. Neste caso, eu chamei o
+		//elemento [0], que seria o primeiro em assunto de vetores.
+		tabela.children[0].style.backgroundColor = '#ccc';
+		
+		//Crio a função que vai inserir cada dado na linha e a linha na tabela.
+		function inserir(){
+			//Recebo o valor do nome
+			var nome = document.avaliacao.nome.value;
+			//Recebo o valor da nota, convertendo-a para float, que é decimal e,
+			//por fim, uso a função toFixed que é nativa do Javascript e serve
+			//para determinar quantas casas após a vírgula deve aparecer no número.
+			var nota = parseFloat(document.avaliacao.nota.value).toFixed(1);
+			
+			//Testo se o valor que foi inserido no input nome não era vazio
+			if(nome != ''){
+				//Crio uma <tr> e a chamo de linha para o código ficar mais legível.
+				var linha = document.createElement('tr');
+				
+				//Crio uma <td> para receber o nome
+				var colnome = document.createElement('td');
+				//Adiciono o nome, no formato TextNode, ao <td>
+				colnome.appendChild(document.createTextNode(nome));
+				//Adiciono o <td> à linha <tr>
+				linha.appendChild(colnome);
+				
+				//Crio uma <tr> para receber a nota
+				var colnota = document.createElement('td');
+				//Adiciono a nota, no formato TextNode, ao <td>
+				colnota.appendChild(document.createTextNode(nota));
+				//Testo se a nota é baixa
+				if(nota < 6){
+					//Caso seja baixa, quero que a cor da fonte dessa célula seja
+					//vermelha para destacar a nota baixa
+					colnota.style.color = 'red';
+				}
+				//Adiciono o <td> de nota à linha <tr>
+				linha.appendChild(colnota);
+				
+				//Crio outra <td> para adicionar a ação de deletar, o botão.
+				var colacoes = document.createElement('td');
+				//Crio o botão
+				var btndeletar = document.createElement('button');
+				//Adiciono o texto dentro da tag do botão
+				//Exemplo: <button>Deletar</button>
+				btndeletar.textContent = 'Deletar';
+				//Adiciono à tag do botão o atributo onclick com o valor deletar(this)
+				//para que seja útil posteriormente
+				btndeletar.setAttribute('onclick', 'deletar(this)');
+				//Adiciono o botão à <td>
+				colacoes.appendChild(btndeletar);
+				//Adiciono a <td>, do botão, à linha <tr>
+				linha.appendChild(colacoes);
+				
+				//Adiciono esta nova linha à tabela
+				tabela.appendChild(linha);
+			} else {
+				//Caso o campo nome esteja vazio, invés de executar tudo, coloco
+				//o cursor apontado no campo obrigando a inserção do nome
+				document.avaliacao.nome.focus();
+			}
+		}
+		
+		//Crio a função deletar que vai reconhecer o botão que foi clicado e
+		//identificar suas tags pais até se situar naquela linha que deve ser excluída
+		//Para que isto seja possível, a função vem com um parametro que é onde
+		//o próprio botão se incluiu com o "this"
+		//Exemplo: "Executa a função deletar(comigo mesmo)"
+		function deletar(botao){
+			//Crio a variavel linha que recebe o pai do pai do botão.
+			/*
+				<tr> <- pai do pai (botao.parentNode.parentNode)
+					<td> <- pai (botao.parentNode)
+						<button> <- botão (botao)
+					...
+			*/
+			var linha = botao.parentNode.parentNode;
+			//Agora que tenho a linha, acesso o pai desta e removo ela mesma.
+			//Exemplo: "eu.meupai.removeFilho(eu mesmo)"
+			linha.parentNode.removeChild(linha);
+		}
+		
+	</script>
+</body>
+
+</html>

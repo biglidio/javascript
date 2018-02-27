@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercício 2</title>
+	
+    <script type="text/javascript">
+        function addTexto(){
+            var valor = document.forms.myForm.texto.value;
+            var ul = document.getElementById('ul1');
+            var li = document.createElement('li');
+            
+            if(valor != ''){
+                var texto = document.createTextNode(valor);
+                li.appendChild(texto);
+            } else {
+                var erro = document.createTextNode('Erro!');
+                li.appendChild(erro);
+                li.style.backgroundColor = '#f00';
+            }
+            
+            ul.appendChild(li);
+        }
+     	
+    </script>
+</head>
+
+<body>
+    <!-- 
+        MONTE UMA PÁGINA QUE CONTENHA UM CAMPO TEXTO EM UM FORM. A PARTIR DE UMA LINHA ul VAZIA DE ID ul1.
+        INCLUA li's QUE CONTENHA O NOME DIGITADO NO CAMPO TEXTO. SE O NOME DIGITADO FOR VAZIO, DEVE APARECER
+        UMA li CONTENDO A MENSAGEM ERRO COM COR-DE-FONTE VERMELHA.
+    -->
+     
+     <form name="myForm">
+         <input type="text" name="texto" id="texto"/>
+         <input type="submit" value="Submit"/>
+     </form>
+     <button onclick="addTexto()">Ver</button>
+     
+     <ul id="ul1"></ul>
+</body>
+</html>

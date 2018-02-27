@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Exercício 2</title>
+	
+	<script type="text/javascript">
+    	function mostraSoma(){
+    		var campo1 = document.getElementById('campo1');
+    		var campo2 = document.getElementById('campo2');
+    		
+    		var soma = parseInt(campo1.value) + parseInt(campo2.value);
+    		
+    		document.write('<p>'+ soma +'</p>');
+    	}
+	</script>
+</head>
+
+<body>
+	<form name="myForm">
+		<input type="text" name="campo1" id="campo1"/>
+		<input type="text" name="campo2" id="campo2"/>
+		<input type="submit" value="Submit"/>
+	</form>
+	<button onclick="mostraSoma()">Acao</button>
+	
+</body>
+</html>

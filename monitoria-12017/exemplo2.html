@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo 2</title>
+        
+        <style type="text/css">
+            table {
+                border: 1px solid #000;
+                width: 600px;
+            }
+            tr {
+                border: 1px solid #000;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="nome" placeholder="José da Silva"/>
+        <input type="text" id="idade" placeholder="23" />
+        <button onclick="insere()">Inserir</button>
+        
+        <br><br>
+        
+        <table id="pessoas">
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Ações</th>
+            </tr>
+        </table>
+        
+        
+        <script type="text/javascript">
+            function insere(){
+                var inputNome = document.querySelector("#nome");
+                var nome = inputNome.value;
+                
+                var inputIdade = document.querySelector("#idade");
+                var idade = inputIdade.value;
+                
+                if (nome != '' && idade != '') {
+                    var tabela = document.querySelector('#pessoas');
+                    
+                    var tr = document.createElement('tr');
+                    
+                    var tdNome = document.createElement('td');
+                    tdNome.innerHTML = nome;
+                    tr.appendChild(tdNome);
+                    
+                    var tdIdade = document.createElement('td');
+                    tdIdade.innerHTML = idade;
+                    tr.appendChild(tdIdade);
+                    
+                    var tdBotao = document.createElement('td');
+                    var botao = document.createElement('button');
+                    botao.innerHTML = 'Deletar';
+                    botao.onclick = function (){
+                        botao.parentNode.parentNode.remove();
+                    }
+                    tdBotao.appendChild(botao);
+                    
+                    var botaoEditar = document.createElement('button');
+                    botaoEditar.innerHTML = 'Editar';
+                    botaoEditar.onclick = function (){
+                        var trEditar = botaoEditar.parentNode.parentNode;
+                        var tdsEditar = trEditar.childNodes;
+                        
+                        var tdEditarNome = tdsEditar[0];
+                        var editarNome = tdEditarNome.innerHTML;
+                        tdEditarNome.innerHTML = '';
+                        var inputNomeEditar = document.createElement('input');
+                        inputNomeEditar.value = editarNome;
+                        tdEditarNome.appendChild(inputNomeEditar);
+                        inputNomeEditar.onblur = function(){
+                            var novoNome = inputNomeEditar.value;
+                            tdEditarNome.innerHTML = novoNome;
+                        }
+                        
+                        var tdEditarIdade = tdsEditar[1];
+                        var editarIdade = tdEditarIdade.innerHTML;
+                        tdEditarIdade.innerHTML = '';
+                        var inputIdadeEditar = document.createElement('input');
+                        inputIdadeEditar.value = editarIdade;
+                        tdEditarIdade.appendChild(inputIdadeEditar);
+                        inputIdadeEditar.onblur = function(){
+                            var novoIdade = inputIdadeEditar.value;
+                            tdEditarIdade.innerHTML = novoIdade;
+                        }
+                    }
+                    tdBotao.appendChild(botaoEditar);
+                    
+                    tr.appendChild(tdBotao);
+                    
+                    tabela.appendChild(tr);
+                    
+                    console.log(tabela);
+                } else {
+                    alert('Os 2 campos devem estar preenchidos.');
+                }
+            }
+            
+        </script>
+    </body>
+</html>

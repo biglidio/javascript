@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Teste 1</title>
+        <style>
+            table{
+                width: 600px;
+            }
+            
+            table, tr, td {
+                border: 1px #000 solid;
+            }
+        </style>
+        <script type="text/javascript">
+            var personagem = {nome: 'Lucas', falar: null};
+            console.log(personagem);
+            personagem.falar = function(){
+                alert('olá');
+            }
+            console.log(personagem['falar']);
+            
+        
+            function preenche(e){
+                var e = document.createElement(e);
+                
+                string = 0;
+                number = 0;
+                object = 0;
+                boolean = 0;
+                func = 0;
+                
+                for (var i in e) {   
+                    if (typeof(e[i]) == 'string') {
+                    var tr = document.createElement('tr');
+                    
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(i));
+                    tr.appendChild(td);
+                    
+                    var td = document.createElement('td');
+                    var text = e[i];
+                    switch (typeof(e[i])) {
+                        case 'string': td.style.backgroundColor = '#bbf'; // azul claro
+                            string++;
+                            break;
+                        case 'number': td.style.backgroundColor = '#bfb'; // verde claro
+                            number++;
+                            break;
+                        case 'object': td.style.backgroundColor = '#bff'; //azul verde
+                            object++;
+                            break;
+                        case 'boolean': td.style.backgroundColor = '#bbb'; // cinza
+                            boolean++;
+                            break;
+                        case 'function': td.style.backgroundColor = '#fbb'; // vermelho
+                            func++;
+                            break;
+                    }
+                    
+                    td.appendChild(document.createTextNode(text));
+                    
+                    
+                    tr.appendChild(td);
+                    
+                    document.getElementById('table').appendChild(tr);
+                    }
+                }
+                
+                for (var i in e) {   
+                    if (typeof(e[i]) == 'number') {
+                    var tr = document.createElement('tr');
+                    
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(i));
+                    tr.appendChild(td);
+                    
+                    var td = document.createElement('td');
+                    var text = e[i];
+                    switch (typeof(e[i])) {
+                        case 'string': td.style.backgroundColor = '#bbf'; // azul claro
+                            string++;
+                            break;
+                        case 'number': td.style.backgroundColor = '#bfb'; // verde claro
+                            number++;
+                            break;
+                        case 'object': td.style.backgroundColor = '#bff'; //azul verde
+                            object++;
+                            break;
+                        case 'boolean': td.style.backgroundColor = '#bbb'; // cinza
+                            boolean++;
+                            break;
+                        case 'function': td.style.backgroundColor = '#fbb'; // vermelho
+                            func++;
+                            break;
+                    }
+                    
+                    td.appendChild(document.createTextNode(text));
+                    
+                    
+                    tr.appendChild(td);
+                    
+                    document.getElementById('table').appendChild(tr);
+                    }
+                }
+                
+                for (var i in e) {   
+                    if (typeof(e[i]) == 'object') {
+                    var tr = document.createElement('tr');
+                    
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(i));
+                    tr.appendChild(td);
+                    
+                    var td = document.createElement('td');
+                    var text = e[i];
+                    switch (typeof(e[i])) {
+                        case 'string': td.style.backgroundColor = '#bbf'; // azul claro
+                            string++;
+                            break;
+                        case 'number': td.style.backgroundColor = '#bfb'; // verde claro
+                            number++;
+                            break;
+                        case 'object': td.style.backgroundColor = '#bff'; //azul verde
+                            object++;
+                            break;
+                        case 'boolean': td.style.backgroundColor = '#bbb'; // cinza
+                            boolean++;
+                            break;
+                        case 'function': td.style.backgroundColor = '#fbb'; // vermelho
+                            func++;
+                            break;
+                    }
+                    
+                    td.appendChild(document.createTextNode(text));
+                    
+                    
+                    tr.appendChild(td);
+                    
+                    document.getElementById('table').appendChild(tr);
+                    }
+                }
+                
+                for (var i in e) {   
+                    if (typeof(e[i]) == 'boolean') {
+                    var tr = document.createElement('tr');
+                    
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(i));
+                    tr.appendChild(td);
+                    
+                    var td = document.createElement('td');
+                    var text = e[i];
+                    switch (typeof(e[i])) {
+                        case 'string': td.style.backgroundColor = '#bbf'; // azul claro
+                            string++;
+                            break;
+                        case 'number': td.style.backgroundColor = '#bfb'; // verde claro
+                            number++;
+                            break;
+                        case 'object': td.style.backgroundColor = '#bff'; //azul verde
+                            object++;
+                            break;
+                        case 'boolean': td.style.backgroundColor = '#bbb'; // cinza
+                            boolean++;
+                            break;
+                        case 'function': td.style.backgroundColor = '#fbb'; // vermelho
+                            func++;
+                            break;
+                    }
+                    
+                    td.appendChild(document.createTextNode(text));
+                    
+                    
+                    tr.appendChild(td);
+                    
+                    document.getElementById('table').appendChild(tr);
+                    }
+                }
+                
+                for (var i in e) {   
+                    if (typeof(e[i]) == 'function') {
+                    var tr = document.createElement('tr');
+                    
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(i));
+                    tr.appendChild(td);
+                    
+                    var td = document.createElement('td');
+                    var text = e[i];
+                    switch (typeof(e[i])) {
+                        case 'string': td.style.backgroundColor = '#bbf'; // azul claro
+                            string++;
+                            break;
+                        case 'number': td.style.backgroundColor = '#bfb'; // verde claro
+                            number++;
+                            break;
+                        case 'object': td.style.backgroundColor = '#bff'; //azul verde
+                            object++;
+                            break;
+                        case 'boolean': td.style.backgroundColor = '#bbb'; // cinza
+                            boolean++;
+                            break;
+                        case 'function': td.style.backgroundColor = '#fbb'; // vermelho
+                            func++;
+                            break;
+                    }
+                    
+                    td.appendChild(document.createTextNode(text));
+                    
+                    
+                    tr.appendChild(td);
+                    
+                    document.getElementById('table').appendChild(tr);
+                    }
+                }
+                
+                console.log('Strings: '+string);
+                console.log('Numbers: '+number);
+                console.log('Objects: '+object);
+                console.log('Booleans: '+boolean);
+                console.log('Functions: '+func);
+                console.log('Total: '+(string+number+object+boolean+func));
+            }
+            
+        </script>
+    </head>
+    <body>
+        <button onclick="preenche('input')">Preenche</button>
+        <table id="table">
+            <tr>
+                <th>Propriedade</th>
+                <th>Valor</th>
+            </tr>
+        </table>
+    </body>
+</html>

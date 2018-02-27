@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript - Aula 2</title>
+        <meta charset="utf-8">
+        
+        <script type="text/javascript">
+            
+            function ex01(){
+                var ps = document.querySelectorAll("p");
+                var p = Array.prototype.slice.call(ps);
+                
+                p.map(function(x){
+                    return x.textContent = "OK!";
+                });
+            }
+            
+            function ex02(){
+                var ps = document.querySelectorAll("p");
+                var p = Array.prototype.slice.call(ps);
+                
+                p.map(function(x){
+                    return x.style.backgroundColor = "yellow";
+                });
+            }
+            
+            function ex03(){
+                var body = document.body;
+                
+                for(var i = 0; i <= 6; i++){
+                    var div = document.createElement("div");
+                    var br = document.createElement("br");
+                    div.textContent = "String " + i;
+                    
+                    body.appendChild(div);
+                    body.appendChild(br);
+                }
+            }
+            
+            function ex04(){
+                var divs_e_ps = document.querySelectorAll("div, p");
+                var div_e_p = Array.prototype.slice.call(divs_e_ps);
+                div_e_p.map(function(x){
+                    return alert(x.textContent);
+                });
+            }
+            
+            function ola(){
+                var elementos = document.querySelectorAll("div, p");
+                var elemento = Array.prototype.slice.call(elementos);
+                
+                elemento.forEach(function(x){
+                    x.addEventListener("click", ola);
+                    alert(x.textContent);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <p><a href="aula02-2.html">Parte 2</a></p>
+        
+        <button onclick="ex01()">Exercício 1</button>
+        <button onclick="ex02()">Exercício 2</button>
+        <button onclick="ex03()">Exercício 3</button>
+        <button onclick="ex04()">Exercício 4</button>
+        <button onclick="ola()">Exercício 5</button>
+        
+        
+        <p>Primeiro</p>
+        <p>Segundo</p>
+        
+    </body>
+</html>

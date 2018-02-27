@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo 1</title>
+    </head>
+    <body>
+        
+        <div id="pai">
+            <button onclick="cria()">Criar</button>
+        </div>
+        
+        
+        <script type="text/javascript">
+            function cria(){
+                var pai = document.getElementById("pai");
+                
+                var tabela = document.createElement("table");
+                var linha = document.createElement("tr");
+                
+                var col1 = document.createElement("td");
+                var text1 = document.createTextNode("Joao");
+                col1.appendChild(text1);
+                linha.append(col1);
+                
+                var col2 = document.createElement("td");
+                col2.innerHTML = "19";
+                linha.append(col2);
+                
+                tabela.appendChild(linha);
+                
+                pai.parentNode.insertBefore(tabela, pai);
+                //pai.insertBefore(tabela);
+                
+            }
+        </script>
+    </body>
+</html>

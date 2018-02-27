@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Desafio</title>
+
+    <script type="text/javascript">
+        function insere() {
+            var tabela = document.getElementById('tabela');
+            var nome = document.forms.myForm.nome.value;
+            var nota = document.forms.myForm.nota.value;
+
+            if (nome != '' && nota >= 6) {
+                //cria linha
+                var linha = document.createElement('div');
+                linha.className += ' linha';
+
+                //cria coluna do nome e acrescenta o nome
+                var col1 = document.createElement('div');
+                col1.className += ' col';
+                nome = document.createTextNode(nome);
+                col1.appendChild(nome);
+
+                //cria coluna da nota e acrescenta a nota
+                var col2 = document.createElement('div');
+                col2.className += ' col';
+                nota = document.createTextNode(nota);
+                col2.appendChild(nota);
+
+                //acrescenta as colunas à linha
+                linha.appendChild(col1);
+                linha.appendChild(col2);
+
+                //acrescenta a linha à tabela
+                tabela.appendChild(linha);
+            }
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <form name="myForm">
+        <input type="text" name="nome" id="nome" placeholder="Nome" />
+        <input type="text" name="nota" id="nota" placeholder="Nota" />
+    </form>
+    <button onclick="insere()">Insere</button>
+    <button onclick="addStyle()">add Style</button>
+
+    <div class="tabela" id="tabela">
+        <div class="linha">
+            <div class="col">Nome</div>
+            <div class="col">Nota</div>
+        </div>
+
+        <!-- toda <div class="linha"> é acrescentada a partir daqui. -->
+    </div>
+
+    <script type="text/javascript">
+        function addStyle() {
+            //chama a div.tabela e modifica o estilo
+            var tabela = document.getElementsByClassName('tabela')[0];
+            tabela.style.width = '250px';
+            tabela.style.marginTop = '25px';
+
+            //chama todas as divs .linha que existem no html e modifica, em loop, o estilo de todas.
+            var linha = document.getElementsByClassName('linha');
+            for (var i = 0; i < linha.length; i++) {
+                linha[i].style.height = '20px';
+                linha[i].style.border = '1px dashed #ccc';
+            }
+
+            //chama todas as divs .coluna que existem no html e modifica, em loop, o estilo de todas.
+            var coluna = document.getElementsByClassName('col');
+            for (var i = 0; i < coluna.length; i++) {
+                coluna[i].style.float = 'left';
+                coluna[i].style.width = '50%';
+            }
+        }
+    </script>
+</body>
+
+</html>

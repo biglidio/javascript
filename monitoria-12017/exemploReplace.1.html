@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo 1</title>
+        <script type="text/javascript">
+            function teste(tag){
+                var pai = document.getElementsByClassName('pai')[0];
+                var elemento = document.createElement(tag);
+                pai.replaceChild(elemento, document.getElementsByClassName('lista')[0]);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="teste('p')">Criar</button>
+                        
+        <div class="pai">
+            <ul class="lista"></ul>
+            <div class="filho"></div>
+        </div>
+    </body>
+</html>

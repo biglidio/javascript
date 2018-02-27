@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Simulado 1 - Questão 1</title>
+
+	<script type="text/javascript">
+		//A função chamada pelo botão é a "inicio" que após o fim de sua execução
+		//retorna a inicialização da função geraTabela que, por sua vez, continua
+		//os procedimentos do exercício.
+		function iniciar() {
+			//Primeiro criamos o conjunto de clientes. Eu preferi uma pilha de objetos.
+			var clientes = [];
+			clientes.push({
+				nome: 'Lucas',
+				idade: 22,
+				salario: 7000
+			});
+			clientes.push({
+				nome: 'Gabriel',
+				idade: 19,
+				salario: 11600
+			});
+			clientes.push({
+				nome: 'Andrei',
+				idade: 23,
+				salario: 2200
+			});
+			clientes.push({
+				nome: 'Saulo',
+				idade: 24,
+				salario: 3500
+			});
+
+			//Ao fim da criação do vetor com alguns clientes empilhados, vamos
+			//chamar a função abaixo denominada "geraTabela" e com o parâmetro
+			//"clientes"(que é o vetor que acabamos de criar) esperado pela mesma.
+			return geraTabela(clientes);
+		}
+
+		function geraTabela(clientes) {
+			//Inicializa-se algumas variáveis para serem acumuladoras de valores
+			var somaidade = 0;
+			var soma = 0;
+
+			//Chama a tag table com id="tabela", armazenando-a em uma variável
+			var tabela = document.getElementById('tabela');
+			
+			//Para cada cliente originados do parâmetro da função que recebeu
+			//estes dados da função "inicio", vamos criar linhas e colunas im-
+			//plementando seus respectivos valores.
+			for (var i in clientes) {
+				//A criação da variável linha que armazena um elemento <tr>
+				var linha = document.createElement('tr');
+
+				//O nome do cliente convertido em texto tipo "node" para ser
+				//possível sua inserção em qualquer outro elemento html
+				var nome = document.createTextNode(clientes[i].nome);
+
+				//A criação da variável colnome que armazena um elemento <td>
+				var colnome = document.createElement('td');
+				//O elemento <td></td> receberá, em seu interior, o nome
+				colnome.appendChild(nome);
+				//O elemento <tr></tr> receberá, em seu interior, a <td></td>
+				linha.appendChild(colnome);
+
+				var idade = document.createTextNode(clientes[i].idade);
+				var colidade = document.createElement('td');
+				colidade.appendChild(idade);
+				linha.appendChild(colidade);
+
+				var salario = document.createTextNode(clientes[i].salario);
+				var colsalario = document.createElement('td');
+				colsalario.appendChild(salario);
+				linha.appendChild(colsalario);
+				
+				//Após todas as colunas necessárias serem incluídas na linha,
+				//esta, por sua vez, será adicionada à tabela. Exemplo:
+				//<table> ...linha aqui... </table>
+				tabela.appendChild(linha);
+
+				//A variável acumuladora recebe, no formato inteiro, o salário
+				//do cliente da vez, somando este com todos os outros já processados
+				soma += parseInt(clientes[i].salario);
+				//Assim, como na variável acima, esta também acumula.
+				somaidade += parseInt(clientes[i].idade);
+			}
+
+			//A média é gerada na formula [media = soma das idades / quantidade de clientes]
+			var media = somaidade / clientes.length;
+
+			//Por final, e logo após a finalização do loop de clientes, adicionamos
+			//mais esta linha para a média das idades e a soma total dos salários
+			linha = document.createElement('tr');
+
+			//Acrescentamos uma coluna vazia para dar o espaçamento correto.
+			//Isto também poderia ser resolvido com a propriedade "colspan"
+			var coluna = document.createElement('td');
+			linha.appendChild(coluna);
+
+			//Cria a coluna média, transforma a variável média em um texto tipo
+			//node para ser inserido no html da coluna e, por fim, adiciona a
+			//coluna na linha totalizadora
+			var colmedia = document.createElement('td');
+			media = document.createTextNode(media);
+			colmedia.appendChild(media);
+			linha.appendChild(colmedia);
+
+			//O mesmo acontece com a coluna da soma, incrementada na linha
+			var colsoma = document.createElement('td');
+			soma = document.createTextNode(soma);
+			colsoma.appendChild(soma);
+			linha.appendChild(colsoma);
+
+			//Por final, agora de tudo, adicionamos a linha totalizadora na tabela
+			tabela.appendChild(linha);
+		}
+		
+		//Para clarear melhor, entenda que o javascript interage diretamente com o html que está na página.
+		//Você não precisa atualizá-la para ter novos resultados, pois a linguagem tem resultados em tempo real.
+		//O javascript converte o html e seus elementos para o tipo node, que é a forma que o manipula.
+		//Sem essa formatação, o javascript não saberia organizar tags dentro de tags e etc...
+		//Além do javascript controlar os elementos, ele também controla as propriedades de estilo(css) de cada um deles.
+	</script>
+
+</head>
+
+<body>
+	<!-- O botão ficou encarregado de, ao ser clicado, executar a função "iniciar" do javascript -->
+	<button onclick="iniciar()">Insere</button>
+
+	<table id="tabela">
+	</table>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Desafio - 1º Bimestre</title>
+</head>
+
+<body>
+	<form name="avaliacao">
+		Dados: 
+		<input type="text" name="nome" placeholder="Digite o nome">
+		<input type="number" name="nota" min="0" max="10" step="0.5" value="0">
+		<input type="button" name="botao" onclick="inserir()" value="Inserir">
+	</form>
+	
+	<br>
+	
+	<table id="tabela">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Nota</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	
+	
+	<script type="text/javascript">
+		var tabela = document.getElementById('tabela');
+		tabela.style.width = '700px';
+		tabela.children[0].style.backgroundColor = '#ccc';
+		
+		var form = document.avaliacao;
+		
+		function inserir(){
+			var nome = form.nome.value;
+			var nota = parseFloat(form.nota.value).toFixed(1);
+			
+			if(nome != ''){
+				var linha = document.createElement('tr');
+				
+				var colnome = document.createElement('td');
+				colnome.appendChild(document.createTextNode(nome));
+				linha.appendChild(colnome);
+				
+				var colnota = document.createElement('td');
+				colnota.appendChild(document.createTextNode(nota));
+				if(nota < 6){
+					colnota.style.color = 'red';
+				}
+				linha.appendChild(colnota);
+				
+				var colacoes = document.createElement('td');
+				
+				var btneditar = document.createElement('button');
+				btneditar.textContent = 'Editar';
+				btneditar.setAttribute('onclick', 'editar(this)');
+				colacoes.appendChild(btneditar);
+				
+				var btndeletar = document.createElement('button');
+				btndeletar.textContent = 'Deletar';
+				btndeletar.setAttribute('onclick', 'deletar(this)');
+				colacoes.appendChild(btndeletar);
+				
+				linha.appendChild(colacoes);
+				
+				tabela.children[1].appendChild(linha);
+				
+				form.nome.value = '';
+				form.nota.value = '0';
+			} else {
+				form.nome.focus();
+			}
+		}
+		
+		function deletar(botao){
+			var linha = botao.parentNode.parentNode;
+			linha.parentNode.removeChild(linha);
+		}
+		
+		function editar(botao){
+			var linha = botao.parentNode.parentNode;
+			var linhas = Array.prototype.slice.call(linha.parentNode.children);
+			
+			var inputnome = form.nome;
+			inputnome.style.backgroundColor = '#6f6';
+			inputnome.value = linha.children[0].innerText;
+			
+			var inputnota = form.nota;
+			inputnota.style.backgroundColor = '#6f6';
+			inputnota.value = linha.children[1].innerText;
+			
+			form.removeChild(form.children[2]);
+			var botao = document.createElement('input');
+			botao.setAttribute('name', 'concluir');
+			botao.setAttribute('type', 'button');
+			botao.setAttribute('onclick', 'concluirEdicao('+linhas.indexOf(linha)+')');
+			botao.value = 'Concluir';
+			form.appendChild(botao);
+		}
+		
+		function concluirEdicao(linha){
+			var nome = form.nome.value;
+			var nota = parseFloat(form.nota.value).toFixed(1);
+			
+			if(nome != ''){
+				linha = tabela.children[1].children[linha];
+				
+				var colnome = linha.children[0];
+				colnome.innerHTML = '';
+				colnome.appendChild(document.createTextNode(nome));
+				
+				var colnota = linha.children[1];
+				colnota.innerHTML = '';
+				colnota.appendChild(document.createTextNode(nota));
+				if(nota < 6){
+					linha.children[1].style.color = 'red';
+				} else {
+					linha.children[1].style.color = 'black';
+				}
+				
+				form.removeChild(form.children[2]);
+				var botao = document.createElement('input');
+				botao.setAttribute('name', 'botao');
+				botao.setAttribute('type', 'button');
+				botao.setAttribute('onclick', 'inserir()');
+				botao.value = 'Inserir';
+				form.appendChild(botao);
+				form.nome.style.backgroundColor = 'white';
+				form.nota.style.backgroundColor = 'white';
+				
+				form.nome.value = '';
+				form.nota.value = '0';
+			} else {
+				form.nome.focus();
+			}
+			
+		}
+		
+	</script>
+</body>
+
+</html>

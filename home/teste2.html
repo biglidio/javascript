@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Teste 2</title>
+        
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            function* gerar(v){
+                var i = 0;
+                v.push(0);
+                
+                while(true){
+                    v[i+5] = v[i+2] ^ v[i+4] ^ v[i+3] ^ v[i];
+                    yield v[v.length-1];
+                    i++;
+                }
+            }
+            
+            function strToArray(s){
+                return s.split('');
+            }
+            
+            function charToDec(c){
+                return c.charCodeAt();
+            }
+            
+            function strToDec(s){
+                var v = strToArray(s);
+                for(var i in v){
+                    v[i] = v[i].charCodeAt();
+                    var d = decToBin(v[i]);
+                    v[i] = d.split('');
+                }
+                return v;
+            }
+            
+            function decToBin(d){
+                return (d >> 0).toString(2);
+            }
+            
+            console.log(strToDec('LUCAS'));
+            
+            // console.log((68 >> 0).toString(2));
+        </script>
+    </body>
+</html>

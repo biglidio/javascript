@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Desafio - 1º Bimestre</title>
+</head>
+
+<body> 
+	<p><input type="checkbox" id="lavar" onclick="checar(0)" class="tarefa">Lavar</p>
+	<p><input type="checkbox" id="secar" onclick="checar(1)" class="tarefa">Secar</p>
+	<p><input type="checkbox" id="passar" onclick="checar(2)" class="tarefa">Passar</p>
+	
+	<script>
+		function checar(i) {
+			var checkbox = document.getElementsByClassName("tarefa")[i];
+			if (checkbox.checked) {
+				checkbox.parentNode.style.color = 'red';
+				checkbox.parentNode.style.textDecoration = 'line-through';
+			} else {
+				checkbox.parentNode.style.color = 'black';
+				checkbox.parentNode.style.textDecoration = 'none';
+			}
+		}
+	</script>
+</body>
+
+</html>

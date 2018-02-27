@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript - Aula 2</title>
+        <meta charset="utf-8">
+        
+        <script type="text/javascript">
+            
+            function ex06(){
+                var divs = document.querySelectorAll("div");
+                var arr = Array.prototype.slice.call(divs);
+                
+                var total = arr.reduce(function(acumulo, x){
+                    return acumulo+parseInt(x.innerHTML);
+                }, 0);
+                
+                alert(total);
+            }
+            
+            function ex07(){
+                var divs = document.querySelectorAll("div");
+                var arr = Array.prototype.slice.call(divs);
+                
+                var total = arr.reduce(function(acumulo, x){
+                    if(parseInt(x.innerHTML) % 2 == 0){
+                        return acumulo+parseInt(x.innerHTML);
+                    } else {
+                        return acumulo;
+                    }
+                }, 0);
+                
+                alert(total);
+            }
+            
+            function ex08(){
+                var divs = document.querySelectorAll("div");
+                var arr = Array.prototype.slice.call(divs);
+                
+                var total = arr.reduce(function(acumulo, x){
+                    if(parseInt(x.innerHTML) % 2 != 0){
+                        return acumulo+parseInt(x.innerHTML);
+                    } else {
+                        return acumulo;
+                    }
+                }, 0);
+                
+                alert(total);
+            }
+            
+            function ex09(){
+                var divs = document.querySelectorAll("div");
+                var arr = Array.prototype.slice.call(divs);
+                
+                var total = arr.reduce(function(acumulo, x){
+                    if(parseInt(x.innerHTML) > 13){
+                        return acumulo+parseInt(x.innerHTML);
+                    } else {
+                        return acumulo;
+                    }
+                }, 0);
+                
+                alert(total);
+            }
+        </script>
+    </head>
+    <body>
+        <p><a href="aula02-1.html">Parte 1</a></p>
+        
+        <p>
+            <button onclick="ex06()">Exercício 6</button>
+            <button onclick="ex07()">Exercício 7</button>
+            <button onclick="ex08()">Exercício 8</button>
+            <button onclick="ex09()">Exercício 9</button>
+        </p>
+        
+        <div>14</div>
+        <div>25</div>
+        <div>38</div>
+        <div>44</div>
+        <div>59</div>
+        <div>62</div>
+        <div>75</div>
+        <div>83</div>
+    </body>
+</html>

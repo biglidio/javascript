@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exemplo 3</title>
+        <script type="text/javascript">
+            function teste(v){
+                //Cria uma tabela
+                var div = document.createElement('table');
+                
+                //Percorre o vetor
+                for (var bar in v) {
+                    //Dispõe os atributos de cada objeto
+                    var baz = v[bar].produto;
+                    var klerk = v[bar].preco;
+                    
+                    //Cria a linha da vez
+                    var p = document.createElement('tr');
+                    
+                    // Cria uma celula e adiciona o baz(nome do produto)
+                    var wook = document.createElement('td');
+                    wook.appendChild(document.createTextNode(baz));
+
+                    // Cria uma celula e adiciona o klerk(preco)
+                    var koow = document.createElement('td');
+                    koow.appendChild(document.createTextNode(klerk));
+                    
+                    //Popula a linha com suas celulas
+                    p.appendChild(koow); // celula do preço
+                    p.appendChild(wook); // celula do nome do produto
+                    
+                    // Coloca a linha dentro da tabela
+                    div.appendChild(p);
+                    
+                }
+                
+                document.body.insertBefore(div, document.body.children[0].nextSibling);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="teste([{produto: 'produto 1', preco: 6.70},
+                        {produto: 'produto 2', preco: 12.90},
+                        {produto: 'produto 3', preco: 18.30}])">Criar</button>
+    </body>
+    
+    <!--
+        <button onclick="nomeFuncao('Texto', 532)">Chama func</button>
+        
+        function nomeFuncao(a, b) {
+            
+        }
+        
+        // adiciona alguem dentro de elemento
+        elemento.appendChild(elemento) 
+        
+        // adiciona quem, dentro de elemento antes do antesDeQuem
+        elemento.insertBefore(quem, antesDeQuem)
+        
+        // acessa a tag a qual o elemento está contido
+        elemento.parentNode()
+        
+        // acessa o primeiro elemento encontrado de acordo com o
+        // parâmetro de consulta
+        document.querySelector('.classe-do-elemento')
+        document.querySelector('#id-do-elemento')
+        document.querySelector('nome-da-tag')
+        Exemplo mais hard: document.querySelector('input[name=telefone]')
+        Exemplo mais hard: document.querySelector('input[type=text]')
+        
+        // Acessa TODOS os elementos encontrados com a consulta
+        document.querySelectorAll('consulta')
+        
+        // Acessa O PRIMEIRO elemento encontrado com o id
+        elemento = document.getElementById('id-do-elemento')
+        elemento.appendChild()
+        
+        // Acessa uma lista de elemntos com a classe procurada
+        elemento = document.getElementsByClassName('classe-dos-elementos)
+        elemento[0].appendChil()
+        
+        // Acessa uma lista de elemntos com o nome da tag procurada
+        elemento = document.getElementsByTagName('nome-da-tag')
+        elemento[0].appendChil()
+        
+        // atribui um novo elemento no lugar de um filho especifico
+        pai.replaceChild(quem, noLugarDeQuem);
+        
+        
+    -->
+    
+</html>

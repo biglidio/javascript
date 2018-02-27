@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Simulado 1 - Questão 2</title>
+</head>
+
+<body>
+	<button id="b1">GO!</button>
+
+	<p>Texto 1</p>
+	<p>Texto 2</p>
+	<p>Texto 3</p>
+
+	<div>Div 1</div>
+	<div>Div 2</div>
+	<div>Div 3</div>
+
+	<script type="text/javascript">
+		var botao = document.getElementById('b1');
+
+		botao.addEventListener('click', function hue() {
+			var p = document.querySelectorAll('p');
+			for (var i = 0; i < p.length; i++) {
+				p[i].style.backgroundColor = 'blue';
+			}
+			
+			var div = document.querySelectorAll('div');
+			for (var i = 0; i < div.length; i++) {
+				div[i].style.backgroundColor = 'red';
+			}
+		});
+	</script>
+</body>
+
+</html>

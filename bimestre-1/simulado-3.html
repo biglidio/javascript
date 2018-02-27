@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<title>Simulado 1 - Questão 3</title>
+	
+	<script type="text/javascript">
+		//Criada a função de foco que recebe o elemento input#num e modifica seu style.backgroundColor para yellow
+		function foco(){
+			var input = document.getElementById("num");
+			input.style.backgroundColor = "yellow";
+		}
+		
+		//Criada a função de foco que recebe o elemento input#num e modifica seu style.backgroundColor para 
+		//[se o valor do input por PAR] green [se o valor do input por IMPAR] green
+		function desfoco(){
+			var input = document.getElementById("num");
+			
+			if(parseInt(input.value) % 2 == 0){
+				input.style.backgroundColor = "green";
+			} else {
+				input.style.backgroundColor = "blue";
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<input type="text" id="num" onfocus="foco()" onblur="desfoco()" />
+</body>
+
+</html>
